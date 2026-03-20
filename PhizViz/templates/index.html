@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PhishViz</title>
+  <link rel="stylesheet" href="../static/style1.css">
+</head>
+
+<body>
+
+  <main class="main-content">
+    <div class="hero">
+      <h1 class="logo">PhishViz</h1>
+      <p class="subtitle">
+        Detect phishing emails before they hit your inbox – Stay ahead of cyber threats
+      </p>
+      <button id="analyzeBtn">Analyze Email</button>
+      <canvas id="particles"></canvas>
+    </div>
+
+    <div class="container">
+      <textarea
+        id="emailInput"
+        rows="8"
+        placeholder="Paste the email content here..."></textarea>
+
+      <div id="result"></div>
+    </div>
+  </main>
+
+  <script src="../static/script.js"></script>
+</body>
+</html>
