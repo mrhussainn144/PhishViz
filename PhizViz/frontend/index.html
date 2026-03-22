@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PhishViz</title>
+  <title>PhishViz - Advanced Phishing Detection System</title>
   <link rel="stylesheet" href="/frontend/css/style.css">
   <link rel="stylesheet" href="/frontend/css/buttons.css">
   <link rel="stylesheet" href="/frontend/css/cards.css">
@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
@@ -24,19 +23,20 @@
         <span class="brand__name">PhishViz</span>
       </div>
       <nav class="nav__links">
-        <a href="/frontend/index.html" class="active">Home</a>
-        <a href="/frontend/email-scan.html">Email Analyzer</a>
-        <a href="/frontend/link-scan.html">Link Detector</a>
-        <a href="/frontend/document-scan.html">Document Scanner</a>
-        <a href="/frontend/stego-kit.html">Steganography Kit</a>
-        <a href="/frontend/dashboard.html">Threat Dashboard</a>
-        <a href="/frontend/reports.html">Reports</a>
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#email-analyzer" class="nav-link">Email Analyzer</a>
+        <a href="#link-detector" class="nav-link">Link Detector</a>
+        <a href="#document-scanner" class="nav-link">Document Scanner</a>
+        <a href="#stego-kit" class="nav-link">Steganography Kit</a>
+        <a href="#dashboard" class="nav-link">Threat Dashboard</a>
+        <a href="#reports" class="nav-link">Reports</a>
       </nav>
     </div>
   </header>
 
   <main class="main-content">
-    <section class="hero hero--with-bg">
+    <!-- Home Section -->
+    <section id="home" class="hero section-active">
       <canvas id="particles"></canvas>
       <div class="hero-visual">
       </div>
@@ -54,7 +54,7 @@
         </div>
         <h3 class="card__title sr-only">Scan a Link</h3>
         <p class="card__desc">Check URLs against heuristics and known-bad lists.</p>
-        <a href="/frontend/link-scan.html" class="btn btn--info">Check URL</a>
+        <a href="#link-detector" class="btn btn--info nav-link">Check URL</a>
       </div>
 
       <div class="card glass">
@@ -64,7 +64,7 @@
         </div>
         <h3 class="card__title sr-only">Analyze an Email</h3>
         <p class="card__desc">Run our ML model to classify emails safely.</p>
-        <a href="/frontend/email-scan.html" class="btn btn--success">Upload Email</a>
+        <a href="#email-analyzer" class="btn btn--success nav-link">Upload Email</a>
       </div>
 
       <div class="card glass">
@@ -74,7 +74,7 @@
         </div>
         <h3 class="card__title sr-only">Scan a Document</h3>
         <p class="card__desc">Detect macros, embedded links and hidden threats.</p>
-        <a href="/frontend/document-scan.html" class="btn btn--success">Upload File</a>
+        <a href="#document-scanner" class="btn btn--success nav-link">Upload File</a>
       </div>
 
       <div class="card glass">
@@ -84,7 +84,7 @@
         </div>
         <h3 class="card__title sr-only">Steganography Kit</h3>
         <p class="card__desc">Detect hidden data and signals in images.</p>
-        <a href="/frontend/stego-kit.html" class="btn btn--secondary">Scan Image</a>
+        <a href="#stego-kit" class="btn btn--secondary nav-link">Scan Image</a>
       </div>
     </section>
 
@@ -98,11 +98,117 @@
         <div class="badge"><span class="dot"></span> Detailed Reports</div>
       </div>
     </section>
+
+    <!-- Email Analyzer Section -->
+    <section id="email-analyzer" class="hero hero--with-bg hero--compact">
+      <canvas id="particles-email" class="particles-canvas"></canvas>
+      <div class="hero-visual"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Email <span class="accent">Analyzer</span></h1>
+        <p class="hero__subtitle">Paste an email and detect phishing signals instantly.</p>
+        <div class="form-stack">
+          <textarea id="emailInput" class="input textarea" rows="10"
+            placeholder="Paste the full email content here..."></textarea>
+          <div class="form-actions">
+            <button id="analyzeEmailBtn" class="btn btn--secondary" type="button">Analyze Email</button>
+          </div>
+          <div id="emailResult" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Link Detector Section -->
+    <section id="link-detector" class="hero hero--with-bg hero--compact">
+      <canvas id="particles-link" class="particles-canvas"></canvas>
+      <div class="hero-visual"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Link <span class="accent">Detector</span></h1>
+        <p class="hero__subtitle">Check a URL for phishing indicators and risk.</p>
+        <div class="form-stack">
+          <textarea id="urlInput" class="input textarea textarea--no-resize url-input" rows="1"
+            placeholder="Paste a URL (https://...)"></textarea>
+          <div class="form-actions">
+            <button id="analyzeLinkBtn" class="btn btn--info" type="button">Scan Link</button>
+          </div>
+          <div id="linkResult" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Document Scanner Section -->
+    <section id="document-scanner" class="hero hero--with-bg hero--compact">
+      <canvas id="particles-document" class="particles-canvas"></canvas>
+      <div class="hero-visual"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Document <span class="accent">Scanner</span></h1>
+        <p class="hero__subtitle">Upload a file to detect macros, embedded links, and anomalies.</p>
+        <div class="form-stack">
+          <input id="fileInput" class="input file-input doc-input" type="file" />
+          <div class="form-actions">
+            <button id="analyzeDocumentBtn" class="btn btn--success" type="button">Scan Document</button>
+          </div>
+          <div id="documentResult" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steganography Kit Section -->
+    <section id="stego-kit" class="hero hero--with-bg hero--compact">
+      <canvas id="particles-stego" class="particles-canvas"></canvas>
+      <div class="hero-visual"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Steganography <span class="accent">Kit</span></h1>
+        <p class="hero__subtitle">Upload an image to detect potential hidden data signals.</p>
+        <div class="form-stack">
+          <input id="imageInput" class="input file-input stego-input" type="file" accept="image/*" />
+          <div class="form-actions">
+            <button id="analyzeStegoBtn" class="btn btn--secondary" type="button">Scan Image</button>
+          </div>
+          <div id="stegoResult" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="hero hero--with-bg hero--compact">
+      <canvas id="particles-dashboard" class="particles-canvas"></canvas>
+      <div class="hero-visual"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Threat <span class="accent">Dashboard</span></h1>
+        <p class="hero__subtitle">Recent scans and overall risk trends.</p>
+        <div class="form-stack">
+          <div id="dashboardStats"></div>
+          <div id="dashboardHistory"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section id="reports" class="hero hero--with-bg hero--compact">
+      <canvas id="particles-reports" class="particles-canvas"></canvas>
+      <div class="hero-visual"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Scan <span class="accent">Reports</span></h1>
+        <p class="hero__subtitle">Export recent scan results for review.</p>
+        <div class="form-stack">
+          <div class="form-actions">
+            <button id="refreshBtn" class="btn btn--secondary" type="button">Refresh</button>
+            <button id="downloadBtn" class="btn btn--info" type="button">Download JSON</button>
+          </div>
+          <div id="reportsContent"></div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="/frontend/js/animations.js"></script>
-  <script src="/frontend/js/main.js"></script>
-
+  <script src="/frontend/js/email.js"></script>
+  <script src="/frontend/js/link.js"></script>
+  <script src="/frontend/js/document.js"></script>
+  <script src="/frontend/js/stego.js"></script>
+  <script src="/frontend/js/dashboard.js"></script>
+  <script src="/frontend/js/reports.js"></script>
+  <script src="/frontend/js/spa.js"></script>
 </body>
 
 </html>
